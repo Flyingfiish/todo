@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import Column from "../Column";
 import AddColumn from "../AddColumn";
 
-const Columns = [];
-
 export default class Desk extends Component {
+  Columns = [];
   state = {
     columns: []
   };
 
   render() {
-    const columnList = Columns.map(column => (
+    const columnList = this.Columns.map(column => (
       <div className="col" key={column.id}>
         <Column
           name={column.name}
@@ -22,41 +21,50 @@ export default class Desk extends Component {
     ));
 
     return (
-      <div className="container-fluid d-flex flex-row">
-        <section
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            overflowX: "auto",
-            height: "800px"
-          }}
-        >
-          {columnList}
-          <div className="col">
-            <AddColumn addColumn={this.addColumn.bind(this)}></AddColumn>
+      <div className="container-fluid">
+        <div className="jumbotron jumbotron-fluid border rounded" style={{padding: '30px 0 '}}>
+          <div className="container">
+            <h1 className="display-4">Название доски</h1>
           </div>
-        </section>
+        </div>
+        <div className="jumbotron jumbotron-fluid d-flex flex-row border rounded" style={{padding: '20px'}}>
+          <section
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              overflowX: "auto",
+              height: "600px"
+            }}
+          >
+            {columnList}
+            <div className="col">
+              <AddColumn addColumn={this.addColumn.bind(this)}></AddColumn>
+            </div>
+          </section>
+        </div>
       </div>
     );
   }
 
   deleteColumn(id) {
-    console.log(id);
-    Columns.splice(id, 1);
+    this.Columns.splice(
+      this.Columns.indexOf(this.Columns.find(item => item.id === id)),
+      1
+    );
     this.setState({
-        columns: Columns
-    })
+      columns: this.Columns
+    });
   }
 
   addColumn(name) {
-    Columns.push({
-      id: Columns.length,
+    this.Columns.push({
+      id: this.Columns.length,
       name: name,
       cards: []
     });
 
     this.setState({
-      columns: Columns
+      columns: this.Columns
     });
   }
 }
