@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Column from "../Column";
+import AddColumn from "../AddColumn";
 
 const Columns = [];
 
@@ -9,21 +10,35 @@ export default class Desk extends Component {
   };
 
   render() {
-    const columnList = Columns.map(column => <Column key={column.id} id={column.id}></Column>);
+    const columnList = Columns.map(column => (
+      <div className="col" key={column.id}>
+        <Column name={column.name} id={column.id}></Column>
+      </div>
+    ));
 
     return (
-      <div className="container">
-        <button className="btn btn-primary btn-lg" onClick={this.addColumn.bind(this)}>Добавить колонку</button>
-        <div>
-            {columnList}
-        </div>
+      <div className="container-fluid d-flex flex-row">
+        <section
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            overflowX: "auto",
+            height: "800px"
+          }}
+        >
+          {columnList}
+          <div className="col">
+            <AddColumn addColumn={this.addColumn.bind(this)}></AddColumn>
+          </div>
+        </section>
       </div>
     );
   }
 
-  addColumn() {
+  addColumn(name) {
     Columns.push({
-      id: Columns.length + 1
+      id: Columns.length + 1,
+      name: name
     });
 
     this.setState({

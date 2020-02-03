@@ -16,7 +16,7 @@ export default class Column extends Component {
     return (
       <div className="card" style={{ width: "400px" }}>
         <div className="card-header">
-          <h2>Column title</h2>
+          <h2>{this.props.name}</h2>
           <h6 className="text-muted"> ID: {this.props.id}</h6>
         </div>
         <div className="card-body">
