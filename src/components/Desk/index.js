@@ -12,7 +12,12 @@ export default class Desk extends Component {
   render() {
     const columnList = Columns.map(column => (
       <div className="col" key={column.id}>
-        <Column name={column.name} id={column.id}></Column>
+        <Column
+          name={column.name}
+          id={column.id}
+          cards={column.cards}
+          deleteColumn={this.deleteColumn.bind(this)}
+        ></Column>
       </div>
     ));
 
@@ -35,10 +40,19 @@ export default class Desk extends Component {
     );
   }
 
+  deleteColumn(id) {
+    console.log(id);
+    Columns.splice(id, 1);
+    this.setState({
+        columns: Columns
+    })
+  }
+
   addColumn(name) {
     Columns.push({
-      id: Columns.length + 1,
-      name: name
+      id: Columns.length,
+      name: name,
+      cards: []
     });
 
     this.setState({
