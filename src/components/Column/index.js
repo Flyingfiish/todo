@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Card from "../Card";
+import CardModel from "../../models/Card";
 
 export default class Column extends Component {
-  Cards = [];
+  Cards = this.props.columnData.cards;
 
   state = {
     cards: [],
@@ -15,6 +16,7 @@ export default class Column extends Component {
         key={card.id}
         name={card.name}
         id={card.id}
+        date={card.date}
         deleteCard={this.deleteCard.bind(this)}
       ></Card>
     ));
@@ -40,17 +42,20 @@ export default class Column extends Component {
           <h6 className="text-muted"> ID: {this.props.id}</h6>
         </div>
         <div className="card-body">
-          <div className="input-group mb-3" style={{padding: '0'}}>
-            <div className="container" style={{maxHeight: '320px', overflowY: 'auto', padding: '0'}}>
-                {cardList}
+          <div className="input-group mb-3" style={{ padding: "0" }}>
+            <div
+              className="container"
+              style={{ maxHeight: "320px", overflowY: "auto", padding: "0" }}
+            >
+              {cardList}
             </div>
             <input
               id={this.props.id}
               type="text"
               className="form-control"
-              style={{margin: '10px 0'}}
+              style={{ margin: "10px 0" }}
             ></input>
-            <div className="input-group-append" style={{margin: '10px 0'}}>
+            <div className="input-group-append" style={{ margin: "10px 0" }}>
               <button
                 className="btn btn-outline-success"
                 type="button"
@@ -79,10 +84,7 @@ export default class Column extends Component {
   addCard() {
     const name = document.getElementById(this.props.id).value;
     if (name !== "") {
-      this.Cards.push({
-        id: this.Cards.length,
-        name: name
-      });
+      this.Cards.push(new CardModel(this.Cards.length, name, {}, new Date()));
 
       this.setState({
         cards: this.Cards,

@@ -9,7 +9,7 @@ export default class AddColumn extends Component {
 
   render() {
     const alert = !this.state.validity && (
-      <p class="text-danger">Введите корректное название</p>
+      <p className="text-danger">Введите корректное название</p>
     );
 
     return (
@@ -18,7 +18,7 @@ export default class AddColumn extends Component {
           <h5 className="card-title">Добавить колонку</h5>
           {alert}
           <div className="input-group mb-3">
-            <input id="columnName" type="text" class="form-control"></input>
+            <input id="columnName" type="text" className="form-control"></input>
             <div className="input-group-append">
               <button
                 className="btn btn-outline-success"
