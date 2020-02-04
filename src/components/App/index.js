@@ -1,10 +1,20 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import NavBar from "../NavBar";
 import Desk from "../Desk";
 import GoogleLogin from "react-google-login";
 
+/*const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [url, setUrl] = useState("");
+const [googleId, setGoogleId] = useState("");*/
+
 const responseGoogle = response => {
   console.log(response);
+  /*setName(response.profileObj.name);
+  setEmail(response.profileObj.email);
+  setUrl(response.profileObj.imageUrl);
+  setGoogleId(response.profileObj.googleId);*/
 };
 
 export default class App extends Component {

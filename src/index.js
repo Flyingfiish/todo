@@ -6,7 +6,6 @@ import DeskModel from "./models/Desk";
 import UserModel from "./models/User";
 import DataModel from "./models/Data";
 
-
 const Desk = new DeskModel([
   {
     id: 0,
@@ -18,9 +17,9 @@ const User = new UserModel(1, [Desk]);
 const Data = new DataModel([User]);
 
 function Base() {
-    function click() {
-        console.log(Data);
-    }
+  function click() {
+    console.log(Data);
+  }
 
   console.log(Data);
   return (
@@ -30,6 +29,5 @@ function Base() {
     </div>
   );
 }
-
 
 render(<Base />, document.getElementById("root"));
