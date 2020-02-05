@@ -3,6 +3,7 @@ import { useState } from "react";
 import NavBar from "../NavBar";
 import Desk from "../Desk";
 import GoogleLogin from "react-google-login";
+import { BDiv } from 'bootstrap-4-react';
 
 /*const [name, setName] = useState("");
 const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ export default class App extends Component {
     console.log(this.props.data);
 
     return (
-      <div>
+      <BDiv>
         <NavBar></NavBar>
         <Desk desk={this.props.data.users[0].desks[0]}></Desk>
         <GoogleLogin
@@ -32,7 +33,7 @@ export default class App extends Component {
           onFailure={responseGoogle}
           cookiePolicy={"single_host_origin"}
         />
-      </div>
+      </BDiv>
     );
   }
 }

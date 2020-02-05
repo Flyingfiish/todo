@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Card from "../Card";
+import CardComponent from "../Card";
 import CardModel from "../../models/Card";
+import { Card, Button, InputGroup, Container, Form, BP } from "bootstrap-4-react";
 
 export default class Column extends Component {
   Cards = this.props.columnData.cards;
@@ -12,23 +13,24 @@ export default class Column extends Component {
 
   render() {
     const cardList = this.Cards.map(card => (
-      <Card
+      <CardComponent
         key={card.id}
         name={card.name}
         id={card.id}
         date={card.date}
         deleteCard={this.deleteCard.bind(this)}
-      ></Card>
+      ></CardComponent>
     ));
 
     const alert = !this.state.validityOfName && (
-      <p class="text-danger">Введите корректное название</p>
+      <BP text="danger">Введите корректное название</BP>
     );
 
     return (
-      <div className="card" style={{ width: "400px" }}>
-        <div className="card-header">
-          <button
+      <Card style={{ width: "400px" }}>
+        <Card.Header>
+          <Button
+            close
             type="button"
             className="close"
             aria-label="Close"
@@ -37,37 +39,37 @@ export default class Column extends Component {
             }}
           >
             <span aria-hidden="true">&times;</span>
-          </button>
+          </Button>
           <h2>{this.props.name}</h2>
           <h6 className="text-muted"> ID: {this.props.id}</h6>
-        </div>
-        <div className="card-body">
-          <div className="input-group mb-3" style={{ padding: "0" }}>
-            <div
-              className="container"
+        </Card.Header>
+        <Card.Body>
+          <InputGroup mb="3" style={{ padding: "0" }}>
+            <Container
               style={{ maxHeight: "320px", overflowY: "auto", padding: "0" }}
             >
               {cardList}
-            </div>
-            <input
+            </Container>
+            <Form.Input
               id={this.props.id}
               type="text"
               className="form-control"
               style={{ margin: "10px 0" }}
-            ></input>
-            <div className="input-group-append" style={{ margin: "10px 0" }}>
-              <button
-                className="btn btn-outline-success"
+            ></Form.Input>
+            <InputGroup.Append style={{ margin: "10px 0" }}>
+              <Button
+                outline
+                success
                 type="button"
                 onClick={this.addCard.bind(this)}
               >
                 +
-              </button>
-            </div>
-          </div>
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
           {alert}
-        </div>
-      </div>
+        </Card.Body>
+      </Card>
     );
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Column from "../Column";
 import AddColumn from "../AddColumn";
 import ColumnModel from "../../models/Column";
+import { Display3, Jumbotron, Container, Col } from "bootstrap-4-react";
 
 export default class Desk extends Component {
   Columns = [];
@@ -14,7 +15,7 @@ export default class Desk extends Component {
   render() {
     console.log(this.desk);
     const columnList = this.desk.columns.map(column => (
-      <div className="col" key={column.id}>
+      <Col key={column.id}>
         <Column
           name={column.name}
           id={column.id}
@@ -22,21 +23,17 @@ export default class Desk extends Component {
           deleteColumn={this.deleteColumn.bind(this)}
           columnData={this.desk.columns[column.id]}
         ></Column>
-      </div>
+      </Col>
     ));
 
     return (
-      <div className="container-fluid">
-        <div
-          className="jumbotron jumbotron-fluid border rounded"
-          style={{ padding: "30px 0 " }}
-        >
-          <div className="container">
-            <h1 className="display-4">Название доски</h1>
-          </div>
-        </div>
-        <div
-          className="jumbotron jumbotron-fluid d-flex flex-row border rounded"
+      <Container fluid>
+        <Display3>Название доски</Display3>
+        <Jumbotron
+          display="flex"
+          flex="row"
+          border
+          rounded
           style={{ padding: "20px" }}
         >
           <section
@@ -48,12 +45,12 @@ export default class Desk extends Component {
             }}
           >
             {columnList}
-            <div className="col">
+            <Col>
               <AddColumn addColumn={this.addColumn.bind(this)}></AddColumn>
-            </div>
+            </Col>
           </section>
-        </div>
-      </div>
+        </Jumbotron>
+      </Container>
     );
   }
 
