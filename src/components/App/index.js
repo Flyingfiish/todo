@@ -15,7 +15,6 @@ export default class App extends Component {
       <BDiv display="flex" h="100">
         <NavBar></NavBar>
         <Desk desk={this.props.data.users[0].desks[0]}></Desk>
-        
       </BDiv>
     );
   }
