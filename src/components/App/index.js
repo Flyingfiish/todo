@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { useState } from "react";
 import NavBar from "../NavBar";
 import Desk from "../Desk";
 
@@ -9,7 +8,7 @@ import { BDiv } from 'bootstrap-4-react';
 
 export default class App extends Component {
   render() {
-    console.log(this.props.data);
+    console.log(JSON.stringify(this.props.data));
 
     return (
       <BDiv display="flex" h="100">

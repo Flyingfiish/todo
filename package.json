@@ -8,10 +8,13 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap-4-react": "0.0.59",
     "bootstrap-icons": "^1.0.0-alpha2",
+    "mongodb": "^3.5.5",
+    "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-google-login": "^5.1.0",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "sass": "^1.26.3"
   },
   "scripts": {
     "start": "react-scripts start",
